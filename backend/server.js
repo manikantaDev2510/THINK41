@@ -6,6 +6,8 @@ import { connectDB } from './config/db.js';
 import userRoutes from './routes/userRoutes.js';
 import sessionRoutes from './routes/sessionRoutes.js';
 import messageRoutes from './routes/messageRoutes.js';
+import ChatRoutes from './routes/ChatRoutes.js';
+import { ENV_VARS } from './config/envVars.js';
 
 dotenv.config();
 const app = express();
@@ -18,8 +20,9 @@ connectDB();
 app.use('/api/users', userRoutes);
 app.use('/api/sessions', sessionRoutes);
 app.use('/api/messages', messageRoutes);
+app.use('/api/chat', ChatRoutes)
 
 app.get('/', (req, res) => res.send("AI Chat Backend Running"));
 
-const PORT = process.env.PORT || 5000;
+const PORT = ENV_VARS.PORT;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
