@@ -1,10 +1,11 @@
-import ChatWindow from './components/ChatWindow';
+import ChatWindow from './components/ChatWindow.jsx';
+import { ChatProvider } from './context/ChatContext.jsx';
 
 const App = () => {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <ChatProvider>
       <ChatWindow />
-    </div>
+    </ChatProvider>
   );
 };
 

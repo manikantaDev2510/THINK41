@@ -1,10 +1,14 @@
-import Message from './Message';
+import React from "react";
+import { useChat } from "../context/ChatContext.jsx";
+import Message from "./Message.jsx";
 
-const MessageList = ({ messages }) => {
+const MessageList = () => {
+    const { messages } = useChat();
+
     return (
-        <div className="overflow-y-auto flex-1 px-4">
-            {messages.map((msg, index) => (
-                <Message key={index} message={msg} />
+        <div className="mb-4 space-y-2">
+            {messages.map((msg, idx) => (
+                <Message key={idx} sender={msg.sender} text={msg.message} />
             ))}
         </div>
     );
